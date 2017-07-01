@@ -112,4 +112,25 @@ public class TestLinearSearch {
 		}
 		System.out.println(this.getClass().getSimpleName() + "2 average find time: " + average + " nanoseconds");
 	}
+
+	@Test
+	public void checkFindPerformanceOnTheBegin() {
+		Random random = new Random(34);// Constant seed
+
+		double average = 0;
+
+		for (int i = 1; i <= 10000; ++i) { // 10 000 iterations
+			long endTime, startTime = System.nanoTime();
+			int indexFromEnd = random.nextInt(340);
+			assertTrue(indexFromEnd >= 0);
+			assertTrue(indexFromEnd < _bigDataSet.length);
+
+			assertEquals(indexFromEnd, _searchAlgorithm.find(_bigDataSet, _bigDataSet[indexFromEnd]));
+			endTime = System.nanoTime();
+
+			average -= average / (double) i;
+			average += (endTime - startTime) / (double) i;
+		}
+		System.out.println(this.getClass().getSimpleName() + " average find time: " + average + " nanoseconds");
+	}
 }
