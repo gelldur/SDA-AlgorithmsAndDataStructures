@@ -88,25 +88,6 @@ public class TestLinearSearch {
 		System.out.println(this.getClass().getSimpleName() + " average find time: " + average + " nanoseconds");
 	}
 
-	// @formatter:off
-	/**
-	 * On my Laptop (Intel i7-4720HQ CPU @ 2.60GHz, 16 GB RAM)
-	 * 
-	 * LinearSearch:
-	 * 		checkFindPerformanceOnTheEnd(28.142s)
-	 * 		checkFindPerformanceOnTheEnd(28.232s)
-	 * 
-	 * 		LinearSearch average find time: 2813452.8150999974 nanoseconds
-	 * 		LinearSearch average find time: 2822564.125599989 nanoseconds
-	 * 
-	 * LinearSearchWithGuard:
-	 * 		checkFindPerformanceOnTheEnd(28.666s)
-	 * 		checkFindPerformanceOnTheEnd(28.601s)
-	 * 
-	 * 		MyLinearSearchWithGuard average find time: 2873863.009399999 nanoseconds
-	 * 		MyLinearSearchWithGuard average find time: 2859368.5756999855 nanoseconds
-	 */
-	// @formatter:on
 	@Test
 	public void checkFindPerformanceOnTheEnd2() {
 		Random random = new Random(341);// Constant seed
