@@ -35,10 +35,9 @@ public class TestLinearSearch {
 
 	@BeforeClass
 	public static void onSetup() {
-		Random random = new Random(12);// Constant seed
-		_bigDataSet = new int[1000000];// 1 000 000 elements
+		_bigDataSet = new int[10000000];// 10 000 000 elements
 		for (int i = 0; i < _bigDataSet.length; ++i) {
-			_bigDataSet[i] = random.nextInt();
+			_bigDataSet[i] = i;
 		}
 	}
 
@@ -49,23 +48,42 @@ public class TestLinearSearch {
 
 	private static int[] _bigDataSet;
 
+	// @formatter:off
+	/**
+	 * On my Laptop (Intel i7-4720HQ CPU @ 2.60GHz, 16 GB RAM)
+	 * 
+	 * LinearSearch:
+	 * 		checkFindPerformanceOnTheEnd(28.142s)
+	 * 		checkFindPerformanceOnTheEnd(28.232s)
+	 * 
+	 * 		LinearSearch average find time: 2813452.8150999974 nanoseconds
+	 * 		LinearSearch average find time: 2822564.125599989 nanoseconds
+	 * 
+	 * LinearSearchWithGuard:
+	 * 		checkFindPerformanceOnTheEnd(28.666s)
+	 * 		checkFindPerformanceOnTheEnd(28.601s)
+	 * 
+	 * 		MyLinearSearchWithGuard average find time: 2873863.009399999 nanoseconds
+	 * 		MyLinearSearchWithGuard average find time: 2859368.5756999855 nanoseconds
+	 */
+	// @formatter:on
 	@Test
 	public void checkFindPerformanceOnTheEnd() {
-		Random random = new Random(33);// Constant seed
+		Random random = new Random(34);// Constant seed
 
 		double average = 0;
 
-		for (int i = 1; i <= 10000; ++i) {
+		for (int i = 1; i <= 10000; ++i) { // 10 000 iterations
 			long endTime, startTime = System.nanoTime();
-			int indexFromEnd = _bigDataSet.length - random.nextInt(120) - 1;
+			int indexFromEnd = _bigDataSet.length - random.nextInt(340) - 1;
 			assertTrue(indexFromEnd >= 0);
 			assertTrue(indexFromEnd < _bigDataSet.length);
 
 			assertEquals(indexFromEnd, _searchAlgorithm.find(_bigDataSet, _bigDataSet[indexFromEnd]));
 			endTime = System.nanoTime();
 
-			average -= average / i;
-			average += (endTime - startTime) / i;
+			average -= average / (double) i;
+			average += (endTime - startTime) / (double) i;
 		}
 		System.out.println(this.getClass().getSimpleName() + " average find time: " + average + " nanoseconds");
 	}
