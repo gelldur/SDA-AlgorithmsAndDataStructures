@@ -14,5 +14,4 @@ public class Main {
 		System.out.println("Count: " + count);
 		minus(count - 1);
 	}
-
 }
