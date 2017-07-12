@@ -15,9 +15,9 @@ public class SortDescending implements Sort {
 
 		// Extra task to use Arrays.asList
 
-		for (int i = 1; i < array.length / 2; ++i) {
+		for (int i = 0; i < array.length / 2; ++i) {
 			int temp = array[i];
-			array[i] = array[array.length - i];
+			array[i] = array[array.length - i - 1];
 			array[array.length - i - 1] = temp;
 		}
 	}
