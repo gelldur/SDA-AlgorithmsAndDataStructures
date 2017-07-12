@@ -35,7 +35,7 @@ public class TestLinearSearch {
 
 	@Test
 	public void testEmpty() {
-		int[] data = {};//empty array
+		int[] data = {};// empty array
 		assertEquals(-1, _searchAlgorithm.find(data, 1));
 		assertFalse(_searchAlgorithm.contains(data, 11));
 	}
