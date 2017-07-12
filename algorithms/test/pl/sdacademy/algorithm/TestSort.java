@@ -57,7 +57,7 @@ public class TestSort {
 
 		_sortAlgorithmAsc.sort(data);
 
-		Assert.assertArrayEquals(new int[] { 0 }, data);// TODO FIXME
+		Assert.assertArrayEquals(new int[] { 1,1,2,3,3,6,7,8,27,3736 }, data);// TODO FIXME
 	}
 
 	@Test
