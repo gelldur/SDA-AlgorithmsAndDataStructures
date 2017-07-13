@@ -13,39 +13,38 @@ public class QuickSort implements Sort {
 	}
 
 	private void quickSort(int[] array, final int leftIndex, final int rightIndex) {
+		if (leftIndex >= rightIndex) {
+			return;
+		}
 
-		int i = leftIndex;
-		int j = rightIndex;
+		int l = leftIndex;
+		int p = rightIndex;
 		// calculate pivot number, I am taking pivot as middle index number
 		final int pivot = array[leftIndex + (rightIndex - leftIndex) / 2];
 		// Divide into two arrays
-		while (i <= j) {
+		while (l <= p) {
 			/**
 			 * In each iteration, we will identify a number from left side which is greater
 			 * then the pivot value, and also we will identify a number from right side
 			 * which is less then the pivot value. Once the search is done, then we exchange
 			 * both numbers.
 			 */
-			while (array[i] < pivot) {
-				++i;
+			while (array[l] < pivot) {
+				++l;
 			}
-			while (array[j] > pivot) {
-				--j;
+			while (array[p] > pivot) {
+				--p;
 			}
-			if (i <= j) {
-				exchangeNumbers(array, i, j);
+			if (l <= p) {
+				exchangeNumbers(array, l, p);
 				// move index to next position on both sides
-				++i;
-				--j;
+				++l;
+				--p;
 			}
 		}
 		// call quickSort() method recursively
-		if (leftIndex < j) {
-			quickSort(array, leftIndex, j);
-		}
-		if (i < rightIndex) {
-			quickSort(array, i, rightIndex);
-		}
+		quickSort(array, leftIndex, p);
+		quickSort(array, l, rightIndex);
 	}
 
 	private void exchangeNumbers(int[] array, final int i, final int j) {
