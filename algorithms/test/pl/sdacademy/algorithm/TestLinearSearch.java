@@ -39,4 +39,12 @@ public class TestLinearSearch {
 		assertEquals(-1, _searchAlgorithm.find(data, 1));
 		assertFalse(_searchAlgorithm.contains(data, 11));
 	}
+	
+
+	@Test
+	public void testOneElement() {
+		int[] data = {55};// empty array
+		assertEquals(0, _searchAlgorithm.find(data, 55));
+		assertEquals(-1, _searchAlgorithm.find(data, 556));
+	}
 }
