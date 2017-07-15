@@ -75,7 +75,14 @@ public class ForwardList implements List {
 			return 0;
 		}
 
-		return 10000;
+		int count = 1;
+		Node currentNode = head;
+		while (currentNode.next != null) {
+			++count;
+			currentNode = currentNode.next;
+		}
+
+		return count;
 	}
 
 	private Node head;
