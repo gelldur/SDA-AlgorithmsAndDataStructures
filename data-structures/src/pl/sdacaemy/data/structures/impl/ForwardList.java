@@ -12,8 +12,8 @@ public class ForwardList implements List {
 
 		Node newElement = new Node(value);
 
-		if (node == null) {
-			node = newElement;
+		if (head == null) {
+			head = newElement;
 			return true;
 		}
 
@@ -31,7 +31,7 @@ public class ForwardList implements List {
 			previous = getItemNode(index - 1);
 		} catch (IndexOutOfBoundsException ex) {
 			if (index == 0) {
-				node = null;
+				head = null;
 				return true;
 			}
 			return false;
@@ -49,8 +49,8 @@ public class ForwardList implements List {
 
 	private Node getItemNode(int index) throws IndexOutOfBoundsException {
 		int currentIndex = 0;
-		Node currentNode = node;
 
+		Node currentNode = head;
 		while (currentNode.next != null && currentIndex < index) {
 			++currentIndex;
 			currentNode = currentNode.next;
@@ -64,14 +64,14 @@ public class ForwardList implements List {
 	}
 
 	public int getSize() {
-		if (node == null) {
+		if (head == null) {
 			return 0;
 		}
 
 		return 10000;
 	}
 
-	private Node node;
+	private Node head;
 
 	public static class Node {
 		public Node(int value) {
