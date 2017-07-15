@@ -26,12 +26,20 @@ public class ForwardList implements List {
 
 	@Override
 	public boolean remove(int index) {
+		Node previous = null;
+		try {
+			previous = getItemNode(index - 1);
+		} catch (IndexOutOfBoundsException ex) {
+			if (index == 0) {
+				node = null;
+				return true;
+			}
+			return false;
+		}
 
-		Node previous = getItemNode(index - 1);
 		Node removedNode = previous.next;
 		previous.next = removedNode.next;
-
-		return false;
+		return true;
 	}
 
 	@Override
