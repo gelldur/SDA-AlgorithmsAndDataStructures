@@ -48,6 +48,13 @@ public class ForwardList implements List {
 	}
 
 	private Node getItemNode(int index) throws IndexOutOfBoundsException {
+		if (index == 0) {
+			if (head == null) {
+				throw new IndexOutOfBoundsException("Sorry no such element: " + index);
+			}
+			return head;
+		}
+
 		int currentIndex = 0;
 
 		Node currentNode = head;
