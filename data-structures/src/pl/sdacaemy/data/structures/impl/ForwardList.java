@@ -6,7 +6,7 @@ public class ForwardList implements List {
 
 	@Override
 	public boolean insert(int index, int value) throws IndexOutOfBoundsException {
-		if (index > getSize() + 1) {
+		if (index >= getSize() + 1) {
 			throw new IndexOutOfBoundsException();
 		}
 
@@ -48,13 +48,13 @@ public class ForwardList implements List {
 	}
 
 	private Node getItemNode(int index) throws IndexOutOfBoundsException {
-		if (index == 0) {
+		if (index == 0 || head == null) {
 			if (head == null) {
 				throw new IndexOutOfBoundsException("Sorry no such element: " + index);
 			}
 			return head;
 		}
-
+		
 		int currentIndex = 0;
 
 		Node currentNode = head;
